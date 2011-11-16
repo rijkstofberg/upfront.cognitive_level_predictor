@@ -1,0 +1,6 @@
+*.pyc
+.~lock.*
+tags
+build/
+dist/
+*.egg-info
