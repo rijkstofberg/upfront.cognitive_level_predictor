@@ -43,7 +43,7 @@ def getBloomsLabel(bloomlevel):
         return None
     
     # erroneous input
-    if bloomlevel not in [1,2,3,4,5,6,7]:
+    if bloomlevel not in range(1,8):
         print("Invalid input value, please input an integer in the range 1 to 7")
         return None
 
@@ -69,7 +69,7 @@ def getText(question_html):
     # parse the html that comes in
     try:
         html = etree.HTML(question_html)
-    except etree.XMLSyntaxError as e:
+    except etree.XMLSyntaxError, e:
         print(e, e.args)
         return None
     
@@ -95,6 +95,7 @@ def getBloomsLevel(text):
     matches = {}
     # split the text so we can match whole words
     text = text.split(' ') 
+    text = [t.lower() for t in text]
 
 
     # for every bloom level
@@ -106,7 +107,7 @@ def getBloomsLevel(text):
         
         matches[b] = count
     
-    print matches
+    #print matches
     # get the name of the highest count
     highest = 0 
     level = 0    
